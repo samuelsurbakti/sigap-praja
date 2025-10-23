@@ -24,6 +24,7 @@
         "spatie/laravel-permission": "^6.21"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.16",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.18",
@@ -43,7 +44,12 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/FileHelper.php",
+            "app/Helpers/TableHelper.php",
+            "app/Helpers/PageHelper.php"
+        ]
     },
     "scripts": {
         "setup": [
