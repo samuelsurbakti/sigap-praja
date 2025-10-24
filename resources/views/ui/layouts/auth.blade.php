@@ -18,9 +18,9 @@
         {{-- Brand --}}
         <a href="#" disabled class="app-brand auth-cover-brand gap-2">
             <span class="app-brand-logo demo">
-                <img src="/src/assets/logo/logo.svg" alt="Logo" class="h-px-34">
+                <img src="/themes/img/assets/logo/light/logo-gabungan.svg" alt="Logo" class="h-px-34">
             </span>
-            <span class="app-brand-text demo text-heading fw-bold text-primary">Kuesioner Rahma Safira</span>
+            <span class="app-brand-text demo text-heading fw-bold text-primary">Sigap Praja</span>
         </a>
 
         {{-- Main auth layout --}}
@@ -29,7 +29,7 @@
             @if (!empty($image))
                 <div class="d-none d-lg-flex col-lg-7 col-xl-8 align-items-center p-5">
                     <div class="w-100 d-flex justify-content-center">
-                        <img src="{{ asset($image) }}" class="img-fluid" style="height: 80vh">
+                        <img src="/themes/img/assets/illustrations/light/{{ $image }}" class="img-fluid" style="height: 80vh" data-app-light-img="assets/illustrations/light/{{ $image }}" data-app-dark-img="assets/illustrations/dark/{{ $image }}">
                     </div>
                 </div>
             @endif
