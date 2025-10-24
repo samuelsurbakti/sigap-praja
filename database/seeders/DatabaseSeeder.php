@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Seeders\Starter\RefDistricts;
+use Database\Seeders\Starter\RefProvinces;
+use Database\Seeders\Starter\RefRegencies;
+use Database\Seeders\Starter\RefVillages;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->call(RefProvinces::class);
+        $this->call(RefRegencies::class);
+        $this->call(RefDistricts::class);
+        $this->call(RefVillages::class);
     }
 }
