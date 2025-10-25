@@ -13,12 +13,17 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('user_id'); // relasi ke users
-            $table->uuid('category_id'); // relasi ke report_categories
-            $table->string('location')->nullable();
+            $table->string('report_number')->unique();
+            $table->uuid('category_id');
+            $table->uuid('priority_id');
+            $table->string('title');
             $table->text('description');
-            $table->enum('status', ['pending', 'in_progress', 'rejected', 'completed'])->default('pending');
-            $table->text('rejected_reason')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->enum('status', ['open','in_progress','rejected','completed','cancelled','reopened'])->default('open');
+            $table->timestamp('reported_at')->nullable();
+            $table->timestamp('resolved_at')->nullable();
+            $table->text('reason')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

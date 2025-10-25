@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report_flows', function (Blueprint $table) {
+        Schema::create('flow_sla', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->foreignUuid('from_role_id');
-            $table->foreignUuid('to_role_id');
-            $table->unsignedInteger('order_number')->default(1);
-            $table->boolean('is_active')->default(true);
+            $table->foreignUuid('report_flow_id')->constrained('report_flows')->cascadeOnDelete();
+            $table->foreignUuid('priority_id')->constrained('report_priorities')->cascadeOnDelete();
+            $table->unsignedInteger('sla_minutes');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_flows');
+        Schema::dropIfExists('flow_sla');
     }
 };

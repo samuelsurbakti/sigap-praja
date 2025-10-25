@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('report_attachments', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('report_id')->constrained('reports')->cascadeOnDelete();
+            $table->string('title');
+            $table->string('filepath');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

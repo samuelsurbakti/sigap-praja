@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report_flows', function (Blueprint $table) {
+        Schema::create('report_priorities', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->foreignUuid('from_role_id');
-            $table->foreignUuid('to_role_id');
-            $table->unsignedInteger('order_number')->default(1);
-            $table->boolean('is_active')->default(true);
+            $table->string('code')->unique();
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report_flows');
+        Schema::dropIfExists('report_priorities');
     }
 };
