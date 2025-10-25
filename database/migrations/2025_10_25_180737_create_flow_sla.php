@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignUuid('priority_id')->constrained('report_priorities')->cascadeOnDelete();
             $table->unsignedInteger('sla_minutes');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
